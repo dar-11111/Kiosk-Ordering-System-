@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk Ordering System</title>
+    <link rel="stylesheet" href="css1.css">
+	<link rel="stylesheet" href="cart.css">
+	
+</head>
+
+<body>
+
+
+
+    <header class="header">
+        <!-- left side menu to -->
+        <div class="logo-section">
+            <img src="logo-ptc.png" alt="Logo">
+            <div class="system-title">Kiosk Ordering System</div>
+        </div>
+		
+
+        <!-- right side menu to -->
+        <nav class="nav-links">
+            <a href="#">Order Now</a>
+            <a href="#">My Order</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+<div class="cart-container">
+    <h2>My Cart</h2>
+
+    <!-- SAMPLE ITEM -->
+    <div class="cart-item" data-price="120">
+        <span>Chicken Burger</span>
+        <div class="qty-controls">
+            <button class="minus">-</button>
+            <span class="qty">1</span>
+            <button class="plus">+</button>
+        </div>
+        <span class="item-total">₱120</span>
+    </div>
+
+    <div class="cart-item" data-price="80">
+        <span>Fries</span>
+        <div class="qty-controls">
+            <button class="minus">-</button>
+            <span class="qty">1</span>
+            <button class="plus">+</button>
+        </div>
+        <span class="item-total">₱80</span>
+    </div>
+
+    <h3>Total: ₱<span id="grand-total">200</span></h3>
+
+    <button class="checkout-btn" onclick="openPopup()">Schedule my Order</button>
+</div>
+
+
+<!-- POPUP PANEL -->
+
+<div class="popup-bg" id="popupPanel">
+    <div class="popup">
+        <h3>Select Date:</h3>
+        <input type="date" id="scheduleDate" required>
+
+        <h3>Enter Your Name:</h3>
+        <input type="text" id="userName" placeholder="Your Name" required>
+
+        <h3>Email:</h3>
+        <input type="email" id="userEmail" placeholder="Your Email" required>
+
+        <h3>School ID:</h3>
+        <input type="text" id="userSchoolID" placeholder="Your School ID" 
+         inputmode="numeric" pattern="[0-9]*" required>
+
+        <button onclick="printReceipt()">Print Receipt</button>
+        <br><br>
+        <button style="background:red" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<script src="cart.js"></script>
+</body>
+</html>
