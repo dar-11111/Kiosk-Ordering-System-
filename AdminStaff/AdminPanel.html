@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Online & Kiosk Ordering</title>
+    <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>ADMIN PANEL</h2>
+    <ul>
+        <li onclick="showPage('dashboardHome')">Dashboard</li>
+        <li onclick="showPage('ordersOnline')">Online Orders</li>
+        <li onclick="showPage('ordersKiosk')">Kiosk Orders</li>
+        <li onclick="showPage('items')">Manage Items</li>
+        <li onclick="showPage('accounts')">Accounts</li>
+        <li onclick="showPage('sales')">Sales</li>
+        <li onclick="showPage('appointments')">Appointments</li>
+    </ul>
+</div>
+
+
+<div class="content">
+
+    <!-- DASHBOARD -->
+<section id="dashboardHome" class="page active">
+    <h1>Dashboard Home</h1>
+
+    <div class="dashboard-grid">
+        <div class="dashboard-card" id="onlineOrdersCard">
+            <h2>Online Orders</h2>
+            <p id="onlineOrdersCount">0</p>
+        </div>
+        <div class="dashboard-card" id="kioskOrdersCard">
+            <h2>Kiosk Orders</h2>
+            <p id="kioskOrdersCount">0</p>
+        </div>
+        <div class="dashboard-card" id="salesCard">
+            <h2>Total Sales</h2>
+            <p id="totalSalesDashboard">₱0</p>
+         </div>
+        <div class="dashboard-card" id="appointmentsCard">
+            <h2>Appointments</h2>
+            <p id="appointmentsCount">0</p>
+        </div>
+        <div class="dashboard-card" id="itemsCard">
+            <h2>Items</h2>
+            <p id="itemsCount">0</p>
+        </div>
+        <div class="dashboard-card" id="accountsCard">
+            <h2>Accounts</h2>
+            <p id="accountsCount">0</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+	
+<!-- ONLINE ORDERS -->
+<section id="ordersOnline" class="page">
+    <h1>Online Orders</h1>
+
+    <!-- STATUS GROUPS -->
+    <div class="order-group">
+        <h2 onclick="toggleGroup('onlinePending')">📌 Pending Orders</h2>
+        <table id="onlinePending" class="orderTable">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="order-group">
+        <h2 onclick="toggleGroup('onlineReady')">🔵 Ready Orders</h2>
+        <table id="onlineReady" class="orderTable hidden">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="order-group">
+        <h2 onclick="toggleGroup('onlineCompleted')">🟢 Completed Orders</h2>
+        <table id="onlineCompleted" class="orderTable hidden">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="order-group">
+        <h2 onclick="toggleGroup('onlineCancelled')">🔴 Cancelled Orders</h2>
+        <table id="onlineCancelled" class="orderTable hidden">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+<br>
+
+<!-- KIOSK ORDERS -->
+<section id="ordersKiosk" class="page">
+    <h1>Kiosk Orders</h1>
+
+    <div class="order-group">
+        <h2 onclick="toggleGroup('kioskPending')">📌 Pending Orders</h2>
+        <table id="kioskPending" class="orderTable">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="order-group">
+        <h2 onclick="toggleGroup('kioskReady')">🔵 Ready Orders</h2>
+        <table id="kioskReady" class="orderTable hidden">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="order-group">
+        <h2 onclick="toggleGroup('kioskCompleted')">🟢 Completed Orders</h2>
+        <table id="kioskCompleted" class="orderTable hidden">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="order-group">
+        <h2 onclick="toggleGroup('kioskCancelled')">🔴 Cancelled Orders</h2>
+        <table id="kioskCancelled" class="orderTable hidden">
+            <thead>
+                <tr>
+                    <th>ID</th><th>School ID</th><th>Name</th><th>Email</th><th>Item</th><th>Status</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+
+    <!-- MANAGE ITEMS -->
+    <section id="items" class="page">
+        <h1>Manage Items</h1>
+
+        <button onclick="openItemForm()">Add New Item</button>
+
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Price</th><th>Details</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+       <!-- ITEM POPUP FORM -->
+<div id="itemForm" class="modal">
+    <div class="modal-content">
+        <h2 id="formTitle">Add Item</h2>
+
+        <label>Item Name</label>
+        <input type="text" id="itemName" placeholder="Item Name">
+
+        <label>Price</label>
+        <input type="number" id="itemPrice" placeholder="Price">
+
+        <label>Details</label>
+        <input type="text" id="itemDetails" placeholder="Item Details">
+
+        <div class="btn-group">
+            <button onclick="saveItem()" class="save-btn">Save</button>
+            <button onclick="closeItemForm()" class="danger">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+    </section>
+
+    <!-- ACCOUNTS -->
+    <section id="accounts" class="page">
+    <h1>Manage Accounts</h1>
+
+    <button onclick="openAccountForm()">Add New Account</button>
+
+    <table id="accountsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- ACCOUNT POPUP FORM -->
+    <div id="accountForm" class="modal">
+        <div class="modal-content">
+            <h2 id="accountFormTitle">Add Account</h2>
+            <input type="text" id="accountName" placeholder="Account Name">
+            <input type="text" id="accountRole" placeholder="Role (Admin, Staff, etc.)">
+            <button onclick="saveAccount()">Save</button>
+            <button onclick="closeAccountForm()" class="danger">Cancel</button>
+        </div>
+    </div>
+</section>
+
+		
+    </section>
+
+    <!-- SALES -->
+   <section id="sales" class="page">
+    <h1>Sales Tracking</h1>
+
+    <!-- FILTER BAR -->
+    <div class="sales-filter">
+        <div class="filter-group">
+            <label>Date From</label>
+            <input type="date" id="dateFrom">
+
+            <label>Date To</label>
+            <input type="date" id="dateTo">
+        </div>
+
+        <div class="filter-group">
+            <input type="text" id="searchSales" placeholder="Search receipt, name, item...">
+        </div>
+
+        <button id="filterBtn">Apply Filter</button>
+    </div>
+
+    <!-- OVERVIEW CARDS -->
+    <div class="sales-cards">
+        <div class="card">
+            <h3>Today's Sales</h3>
+            <p id="todaySales">₱0</p>
+        </div>
+        <div class="card">
+            <h3>This Week</h3>
+            <p id="weekSales">₱0</p>
+        </div>
+        <div class="card">
+            <h3>This Month</h3>
+            <p id="monthSales">₱0</p>
+        </div>
+        <div class="card">
+            <h3>Total Sales</h3>
+            <p id="totalSales">₱0</p>
+        </div>
+    </div>
+
+    <!-- SALES TABLE -->
+    <table id="salesTable">
+        <thead>
+            <tr>
+                <th>Receipt #</th>
+                <th>Customer Name</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<!-- APPOINTMENTS -->
+<section id="appointments" class="page">
+    <h1>Appointment Schedules</h1>
+
+    <table id="appointmentTable" class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>School ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+
+</div>
+
+<script src="Admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff Panel - Kiosk & Online Ordering</title>
+  <link rel="stylesheet" href="Staff.css" />
+  <script src="https://unpkg.com/@zxing/library@latest"></script>
+
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Staff Panel</h2>
+    <ul>
+      <li class="active" onclick="showPage('incomingOrders')">Incoming Orders</li>
+      <li onclick="showPage('pickupSchedule')">Pickup Schedule</li>
+      <li onclick="showPage('inventoryCheck')">Inventory Check</li>
+      <li onclick="showPage('reports')">Reports</li>
+    </ul>
+  </div>
+
+
+
+<!--INCOMING ORDER--!>
+  <div class="content">
+    <section id="incomingOrders" class="page active">
+      <h1>Incoming Orders</h1>
+	  <div class="search-container right-align">
+    <input type="text" id="searchInput" placeholder="Search by Name, School ID, or Item...">
+    <button id="scanBtn">📷 Scan Code</button>
+</div>
+
+<!-- Camera scanner popup -->
+<div id="scannerPopup" class="scanner-popup">
+    <video id="scannerCamera" autoplay></video>
+    <button id="closeScanner">Close</button>
+</div>
+
+      <div id="orderList" class="card-container"></div>
+	  
+    </section>
+
+
+<!--PICKUP--!>
+    <section id="pickupSchedule" class="page">
+      <h1>Pickup Schedule</h1>
+      <div id="scheduleList" class="card-container"></div>
+ 
+    </section>
+
+
+
+<!--INVENTORY--!>
+    <section id="inventoryCheck" class="page">
+      <h1>Inventory Check</h1>
+      <div id="inventoryList" class="card-container"></div>
+    </section>
+
+
+<!--REPORTS--!>
+    <section id="reports" class="page">
+      <div class="reports-container">
+    <h1 class="reports-title">Reports Dashboard</h1>
+
+    <!-- Top Filters -->
+    <div class="report-filters">
+        <div>
+            <label style="color: #0D120A;">Date From</label>
+            <input type="date" id="dateFrom">
+        </div>
+        <div>
+            <label style="color: #0D120A;">Date To</label>
+            <input type="date" id="dateTo">
+        </div>
+        <button id="filterBtn">Filter</button>
+        <button id="exportBtn">Export PDF</button>
+    </div>
+
+    <!-- Cards -->
+    <div class="report-cards">
+        <div class="report-card" id="salesCard">
+            <h2>Total Sales</h2>
+            <p class="value">₱0.00</p>
+        </div>
+
+        <div class="report-card" id="onlineCard">
+            <h2>Online Orders</h2>
+            <p class="value">0</p>
+        </div>
+
+        <div class="report-card" id="kioskCard">
+            <h2>Kiosk Orders</h2>
+            <p class="value">0</p>
+        </div>
+
+        <div class="report-card" id="appointmentCard">
+            <h2>Appointments</h2>
+            <p class="value">0</p>
+        </div>
+    </div>
+
+    <!-- Chart Placeholder -->
+    <div class="report-chart">
+        <h2>Sales Chart (Placeholder)</h2>
+        <div class="chart-box">Chart goes here</div>
+    </div>
+
+    <!-- Table -->
+    <div class="report-table-container">
+        <h2>Detailed Report</h2>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>User</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="reportTableBody">
+                <!-- JS inserts data here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    </section>
+  </div>
+
+  <script src="Staff.js"></script>
+</body>
+</html>
