@@ -1,0 +1,40 @@
+body {
+  background: #eef4ec;
+  font-family: Poppins, sans-serif;
+}
+
+header {
+  background: black;
+  padding: 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #00c853;
+}
+
+.cart-section {
+  padding: 130px 40px;
+  text-align: center;
+}
+
+.cart-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  max-width: 450px;
+  margin: auto;
+}
