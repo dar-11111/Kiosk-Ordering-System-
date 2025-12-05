@@ -97,10 +97,11 @@ function printReceipt() {
   let email = document.getElementById("userEmail").value;
   let schoolID = document.getElementById("userSchoolID").value;
   let scheduleDate = document.getElementById("scheduleDate").value;
+  let scheduleDate = document.getElementById("scheduleTime").value;
 
   // Validate inputs
   if (user.trim() === "" || email.trim() === "" || schoolID.trim() === "" || scheduleDate === "") {
-    alert("Please fill up all fields: Name, Email, School ID, and Schedule Date.");
+    alert("Please fill up all fields: Name, Email, School ID, and Schedule Date, Schedule Time");
     return;
   }
 
@@ -178,3 +179,4 @@ function printReceipt() {
 // INIT
 // -------------------------------
 displayCart();
+
