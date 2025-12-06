@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessories Kiosk</title>
+<link rel="stylesheet" href="accessories.css">
+</head>
+<body>
+
+<!-- TOP MENU DROPDOWN -->
+<div class="topbar">
+    <div class="menu-toggle" onclick="toggleDropdown()">☰</div>
+
+    <div id="dropdown-menu" class="dropdown-menu">
+        <a href="Mainmenu.html">Home</a>
+        <a href="uniform.html">Uniforms</a>
+        <a href="schoolsupplies.html">School Supplies</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="toga.html">Toga</a>
+        <a href="schoolessentials.html">School Essentials</a>
+        <a href="merchandsouvenirs.html">Merch & Souvenirs</a>
+        <a href="addtocart.html">Add To Cart</a>
+    </div>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-container">
+    <div class="slide active">
+        <img src="image/ptc.jpg" alt="Accessories Banner 1">
+    </div>
+    <div class="slide">
+        <img src="image/ptcschool.png" alt="Accessories Banner 2">
+    </div>
+    <div class="slide">
+        <img src="image/ptcperson.jpg" alt="Accessories Banner 3">
+    </div>
+</div>
+
+<h1>Select Your Accessories</h1>
+
+<!-- FILTER BUTTONS -->
+<div class="filter-container">
+    <button class="filter-btn" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="lanyard">Lanyards</button>
+    <button class="filter-btn" data-filter="tags">Tags</button>
+    <button class="filter-btn" data-filter="keychain">Keychains</button>
+    <button class="filter-btn" data-filter="others">Others</button>
+</div>
+
+<!-- CAROUSEL -->
+<div class="carousel-container">
+    <div class="carousel">
+
+        <!-- Item 1 -->
+        <div class="carousel-item" data-type="lanyard">
+            <img src="image/lanyard.png" alt="School Lanyard">
+            <div class="item-name">School Lanyard</div>
+            <div class="item-price">₱80.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="carousel-item" data-type="keychain">
+            <img src="image/keychain.png" alt="School Keychain">
+            <div class="item-name">School Keychain</div>
+            <div class="item-price">₱50.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="carousel-item" data-type="tags">
+            <img src="image/bagtag.png" alt="Bag Tag">
+            <div class="item-name">Bag Tag</div>
+            <div class="item-price">₱40.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+    
+        <div class="carousel-item" data-type="others">
+            <img src="image/stickers.png" alt="Sticker Pack">
+            <div class="item-name">Sticker Pack</div>
+            <div class="item-price">₱25.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="carousel-item" data-type="others">
+            <img src="image/nstppin.jpg" alt="Wristband">
+            <div class="item-name">Nstp Pin</div>
+            <div class="item-price">₱30.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="carousel-item" data-type="lanyard">
+            <img src="image/idholder.png" alt="ID Holder">
+            <div class="item-name">ID Holder</div>
+            <div class="item-price">₱35.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
+    <button class="nav prev">&#10094;</button>
+    <button class="nav next">&#10095;</button>
+</div>
+
+<!-- MINI CART -->
+<div id="mini-cart">
+    <div class="cart-header">
+        <span>My Cart</span>
+        <button id="close-cart">&times;</button>
+    </div>
+
+    <div class="cart-items"></div>
+
+    <div class="cart-footer">
+        <div>Total: ₱<span id="cart-total">0</span></div>
+        <button id="checkout-btn">Checkout</button>
+    </div>
+</div>
+
+<!-- CART TOGGLE BUTTON -->
+<button id="cart-toggle">🛒<span id="cart-count">0</span></button>
+
+<script src="accessories.js"></script>
+</body>
+</html>

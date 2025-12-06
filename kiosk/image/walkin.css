@@ -1,0 +1,144 @@
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+
+    /* Background image */
+    background-image: url('ptcschool.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Optional overlay para readable ang form */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.25);
+    z-index: -1;
+}
+
+/* ===== ANIMATION ===== */
+.fade-in {
+    animation: fadeIn 0.9s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== MAIN BOX ===== */
+.main-box {
+    width: 100%;
+    max-width: 480px; /* sakto lang */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* WALK-IN Heading with Animated Shimmer Gradient */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFFF00, #FFD700);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== FORM BOX ===== */
+.form-box {
+    width: 100%;
+    padding: 35px;
+    border: 3px solid #009933;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 18px;
+    color: #006600;
+}
+
+/* Inputs */
+input {
+    width: 80%; /* sakto lang */
+    padding: 12px;
+    border: 3px solid #00b300;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+input:focus {
+    background: #e6ffe6;
+    border-color: #009933;
+    transform: scale(1.03);
+    outline: none;
+}
+
+/* ===== BUTTON AS LINK ===== */
+.btn {
+    display: inline-block;
+    width: 80%; /* sakto lang */
+    padding: 14px;
+    border: 3px solid #009933;
+    background: linear-gradient(135deg, #00b300, #66ff66);
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.25s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #00e600, #99ff99);
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .form-box {
+        padding: 25px;
+    }
+    input, .btn {
+        width: 90%;
+    }
+    h2 {
+        font-size: 26px;
+    }
+}

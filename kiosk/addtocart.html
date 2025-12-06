@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="addtocart.css" />
+</head>
+<body>
+
+<!-- TOP MENU DROPDOWN -->
+<div class="topbar">
+    <div class="menu-toggle" onclick="toggleDropdown()">☰</div>
+
+    <div id="dropdown-menu" class="dropdown-menu">
+        <a href="Mainmenu.html">Home</a>
+        <a href="uniform.html">Uniforms</a>
+        <a href="schoolsupplies.html">School Supplies</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="toga.html">Toga</a>
+        <a href="schoolessentials.html">School Essentials</a>
+        <a href="merchandsouvenirs.html">Merch & Souvenirs</a>
+        <a href="addtocart.html">My Cart</a>
+    </div>
+</div>
+
+<!-- CART CONTENT -->
+<div class="cart-container">
+    <h1>Your Cart</h1>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-summary">
+        <p>Total: ₱<span id="total-price">0</span></p>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</div>
+
+<div class="footer">Touch to Order</div>
+
+<script src="addtocart.js"></script>
+</body>
+</html>

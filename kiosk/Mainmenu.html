@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kiosk Main Menu</title>
+<link rel="stylesheet" href="Mainmenu.css" />
+</head>
+<body>
+
+<!-- TOP MENU DROPDOWN -->
+<div class="topbar">
+    <div class="menu-toggle" onclick="toggleDropdown()">☰</div>
+
+    <div id="dropdown-menu" class="dropdown-menu">
+        <a href="Mainmenu.html">Home</a>
+        <a href="uniform.html">Uniforms</a>
+        <a href="schoolsupplies.html">School Supplies</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="toga.html">Toga</a>
+        <a href="schoolessentials.html">School Essentials</a>
+        <a href="merchandsouvenirs.html">Merch & Souvenirs</a>
+        <a href="addtocart.html">Add To Cart</a>
+        <!-- LOGOUT BUTTON -->
+        <a href="#" class="logout-btn" onclick="logout()">Logout</a>
+    </div>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-container">
+    <div class="slide active">
+        <img src="image/ptc.jpg" alt="" />
+    </div>
+    <div class="slide">
+        <img src="image/ptcschool.png" alt="" />
+    </div>
+    <div class="slide">
+        <img src="image/ptcperson.jpg" alt="" />
+    </div>
+</div>
+
+<!-- MENU AREA -->
+<div class="menu-area">
+
+    <div class="menu-btn" onclick="goTo('uniform.html')">
+        <div class="menu-img-fit">
+            <img src="image/uniform.png" alt="Uniforms" />
+        </div>
+        <div class="menu-label">Uniforms</div>
+    </div>
+
+    <div class="menu-btn" onclick="goTo('schoolsupplies.html')">
+        <div class="menu-img-fit">
+            <img src="image/schoolsupplies.jpg" alt="School Supplies" />
+        </div>
+        <div class="menu-label">School Supplies</div>
+    </div>
+
+    <div class="menu-btn" onclick="goTo('accessories.html')">
+        <div class="menu-img-fit">
+            <img src="image/nstppin.jpg" alt="Accessories" />
+        </div>
+        <div class="menu-label">Accessories</div>
+    </div>
+
+    <div class="menu-btn" onclick="goTo('toga.html')">
+        <div class="menu-img-fit">
+            <img src="image/toga.jpg" alt="Toga" />
+        </div>
+        <div class="menu-label">Toga</div>
+    </div>
+
+    <div class="menu-btn" onclick="goTo('schoolessentials.html')">
+        <div class="menu-img-fit">
+            <img src="image/id.jpg" alt="School Essentials" />
+        </div>
+        <div class="menu-label">School Essentials</div>
+    </div>
+
+    <div class="menu-btn" onclick="goTo('merchandsouvenirs.html')">
+        <div class="menu-img-fit">
+            <img src="images/cart.png" alt="Merch & Souvenirs" />
+        </div>
+        <div class="menu-label">Merch & Souvenirs</div>
+    </div>
+
+</div>
+
+<div class="footer">Touch to Order</div>
+
+<script>
+function toggleDropdown() {
+    const menu = document.getElementById("dropdown-menu");
+    menu.classList.toggle("show");
+}
+
+function goTo(page) {
+    window.location.href = page;
+}
+
+// LOGOUT FUNCTION (from walkin.js)
+function logout() {
+    if (confirm("Are you sure you want to logout?")) {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "image/walkin.html";
+    }
+}
+</script>
+
+<script src="Mainmenu.js"></script>
+</body>
+</html>

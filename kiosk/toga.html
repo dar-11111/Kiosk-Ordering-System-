@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toga Kiosk</title>
+<link rel="stylesheet" href="toga.css">
+</head>
+<body>
+
+    <!-- TOP MENU DROPDOWN -->
+<div class="topbar">
+    <div class="menu-toggle" onclick="toggleDropdown()">☰</div>
+
+    <div id="dropdown-menu" class="dropdown-menu">
+        <a href="Mainmenu.html">Home</a>
+        <a href="uniform.html">Uniforms</a>
+        <a href="schoolsupplies.html">School Supplies</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="toga.html">Toga</a>
+        <a href="schoolessentials.html">School Essentials</a>
+        <a href="merchandsouvenirs.html">Merch & Souvenirs</a>
+        <a href="addtocart.html">Add To Cart</a>
+    </div>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-container">
+    <div class="slide active">
+        <img src="image/ptc.jpg" alt="" />
+    </div>
+    <div class="slide">
+        <img src="image/ptcschool.png" alt="" />
+    </div>
+    <div class="slide">
+        <img src="image/ptcperson.jpg" alt="" />
+    </div>
+</div>
+
+
+<h1>Select Your Uniform</h1>
+
+<!-- Filter Buttons -->
+<div class="filter-container">
+    <button class="filter-btn" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="men">Men</button>
+    <button class="filter-btn" data-filter="women">Women</button>
+    <button class="filter-btn" data-filter="unisex">Unisex</button>
+</div>
+
+<div class="carousel-container">
+    <div class="carousel">
+        <!-- Item 1 - Unisex -->
+        <div class="carousel-item" data-type="unisex">
+            <img src="" alt="PE Uniform">
+            <div class="item-name">Toga</div>
+            <div class="item-price">₱350.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <!-- Item 2 - Men -->
+        <div class="carousel-item" data-type="men">
+            <img src="image/uniform2.png" alt="Male Uniform">
+            <div class="item-name">Toga(Male)</div>
+            <div class="item-price">₱650.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <!-- Item 3 - Women -->
+        <div class="carousel-item" data-type="women">
+            <img src="image/Blouse.jpg" alt="Female Uniform">
+            <div class="item-name">Toga(Female)</div>
+            <div class="item-price">₱650.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+         <!-- Item 4 - Women -->
+        <div class="carousel-item" data-type="men">
+            <img src="image/uniform3.png" alt="Female Uniform">
+            <div class="item-name">Toga(male)</div>
+            <div class="item-price">₱650.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+        <!-- Item 5- Women -->
+         <div class="carousel-item" data-type="women">
+            <img src="image/uniform3.png" alt="Female Uniform">
+            <div class="item-name">Toga(Female)</div>
+            <div class="item-price">₱650.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <!-- Item 6 - Unisex -->
+        <div class="carousel-item" data-type="unisex">
+            <img src="image/uniform4.png" alt="NSTP Shirt">
+            <div class="item-name">Toga</div>
+            <div class="item-price">₱250.00</div>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">−</button>
+                <span class="qty">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Carousel Navigation -->
+    <button class="nav prev">&#10094;</button>
+    <button class="nav next">&#10095;</button>
+</div>
+
+<!-- Mini Cart -->
+<div id="mini-cart">
+    <div class="cart-header">
+        <span>My Cart</span>
+        <button id="close-cart">&times;</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+        <div>Total: ₱<span id="cart-total">0</span></div>
+        <button id="checkout-btn">Checkout</button>
+    </div>
+</div>
+
+<!-- Cart toggle -->
+<button id="cart-toggle">🛒<span id="cart-count">0</span></button>
+
+<script src="toga.js"></script>
+</body>
+</html>
+
