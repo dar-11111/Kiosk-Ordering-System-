@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - kiosk ordering system</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+  <header>
+      <div class="brand">
+          <img src="image/ptclog-removebg-preview.png" alt="School Logo" class="logo">
+          <h1>Pateros Technological College</h1>
+      </div>
+  </header>
+
+  <div class="main-box fade-in">
+
+      <div class="form-box">
+
+          <label>Name:</label>
+          <input id="loginName" type="text" placeholder="Enter your name" required>
+
+          <label>School ID:</label>
+          <input id="loginID" type="text" placeholder="Enter your school ID" required>
+
+          <label>Email:</label>
+          <input id="loginEmail" type="email" placeholder="Enter your email" required>
+
+          <label>Contact No:</label>
+          <input id="loginContact" type="text" placeholder="Enter your contact number" required>
+
+          <button class="btn" onclick="saveLogin()">Proceed to Order</button>
+
+          <div class="register-box">
+              <p>Don’t have an account?</p>
+              <a href="register.html" class="register-link">Register Here</a>
+          </div>
+
+      </div>
+  </div>
+
+  <footer>
+      © 2025 Kiosk | School Supply Ordering System
+  </footer>
+
+  <script>
+      function saveLogin() {
+          let name = document.getElementById("loginName").value;
+          let id = document.getElementById("loginID").value;
+          let email = document.getElementById("loginEmail").value;
+          let contact = document.getElementById("loginContact").value;
+
+          if (!name || !id || !email || !contact) {
+              alert("Please fill out all fields.");
+              return;
+          }
+
+     
+          localStorage.setItem("userName", name);
+          localStorage.setItem("userID", id);
+          localStorage.setItem("userEmail", email);
+          localStorage.setItem("userContact", contact);
+
+          window.location.href = "profile.html";
+      }
+  </script>
+
+</body>
+</html>
