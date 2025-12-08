@@ -31,12 +31,13 @@ let kioskOrders = [
 ];
 
 let items = [
-    { id: 1, name: "School Uniform", price: 350, details: "daj hduawh duhawu hd"},
+    { id: 1, name: "School Uniform", price: 350, size: "L", quantity:38, details: "daj hduawh duhawu hd"},
 ];
 
 let accounts = [
-    { id: 1, name: "Admin 1", role: "Administrator" }
+    { id: 1, name: "Admin 1", role: "Admin", password: "12345" }
 ];
+
 
 let editingAccountId = null;
 
@@ -169,6 +170,8 @@ function loadItems() {
             <td>${i.id}</td>
             <td>${i.name}</td>
             <td>₱${i.price}</td>
+			<td>${i.size}</td>
+			<td>${i.quantity}</td>
 			<td>${i.details}</td>
             <td>
                 <button onclick="editItem(${i.id})">Edit</button>
@@ -178,24 +181,28 @@ function loadItems() {
     ).join("");
 }
 
+
 // global editingId already declared elsewhere
 let editingId = null;
 
 function openItemForm() {
   editingId = null;
   const modal = document.getElementById("itemForm");
-  modal.style.display = "flex";          // use flex (matches modal CSS)
+  modal.style.display = "flex";
   document.getElementById("formTitle").innerText = "Add Item";
+
   document.getElementById("itemName").value = "";
   document.getElementById("itemPrice").value = "";
-  const detailsEl = document.getElementById("itemDetails");
-  if (detailsEl) detailsEl.value = "";
-  // optional: focus first input
+  document.getElementById("itemSize").value = "";
+  document.getElementById("itemQuantity").value = "";
+  document.getElementById("itemDetails").value = "";
+
   document.getElementById("itemName").focus();
 }
 
+
 function editItem(id) {
-  editingId = Number(id);                 // normalize id type
+  editingId = Number(id);
   const item = items.find(i => Number(i.id) === editingId);
 
   if (!item) {
@@ -204,44 +211,45 @@ function editItem(id) {
   }
 
   const modal = document.getElementById("itemForm");
-  modal.style.display = "flex";           // must match CSS (.modal { display:flex })
+  modal.style.display = "flex";
   document.getElementById("formTitle").innerText = "Edit Item";
-  document.getElementById("itemName").value = item.name || "";
-  document.getElementById("itemPrice").value = item.price != null ? item.price : "";
-  const detailsEl = document.getElementById("itemDetails");
-  if (detailsEl) detailsEl.value = item.details || "";
+
+  document.getElementById("itemName").value = item.name;
+  document.getElementById("itemPrice").value = item.price;
+  document.getElementById("itemSize").value = item.size;
+  document.getElementById("itemQuantity").value = item.quantity;
+  document.getElementById("itemDetails").value = item.details;
+
   document.getElementById("itemName").focus();
 }
 
+
 function saveItem() {
   const name = document.getElementById("itemName").value.trim();
-  const priceStr = document.getElementById("itemPrice").value;
-  const price = priceStr === "" ? NaN : parseFloat(priceStr);
-  const detailsEl = document.getElementById("itemDetails");
-  const details = detailsEl ? detailsEl.value.trim() : "";
+  const price = parseFloat(document.getElementById("itemPrice").value);
+  const size = document.getElementById("itemSize").value.trim();
+  const quantity = parseInt(document.getElementById("itemQuantity").value);
+  const details = document.getElementById("itemDetails").value.trim();
 
-  if (!name || isNaN(price)) {
-    return alert("Please fill in both Name and valid Price.");
+  if (!name || isNaN(price) || !size || isNaN(quantity)) {
+    return alert("Please fill in all fields correctly.");
   }
 
   if (editingId) {
-    // update existing
-    const it = items.find(i => Number(i.id) === Number(editingId));
-    if (!it) {
-      alert("Item not found. Cannot update.");
-      closeItemForm();
-      return;
-    }
+    let it = items.find(i => Number(i.id) === editingId);
     it.name = name;
     it.price = price;
+    it.size = size;
+    it.quantity = quantity;
     it.details = details;
   } else {
-    // add new
-    const newId = items.length ? Math.max(...items.map(i => Number(i.id))) + 1 : 1;
+    const newId = items.length ? Math.max(...items.map(i => i.id)) + 1 : 1;
     items.push({
       id: newId,
       name,
       price,
+      size,
+      quantity,
       details
     });
   }
@@ -282,7 +290,6 @@ function deleteItem(id) {
 
 
 // ACCOUNTS 
-// LOAD ACCOUNTS TABLE 
 function loadAccounts() {
     const tbody = document.querySelector("#accountsTable tbody");
     tbody.innerHTML = accounts.map(a =>
@@ -290,6 +297,7 @@ function loadAccounts() {
             <td>${a.id}</td>
             <td>${a.name}</td>
             <td>${a.role}</td>
+            <td>${a.password}</td>
             <td>
                 <button onclick="editAccount(${a.id})">Edit</button>
                 <button class="danger" onclick="deleteAccount(${a.id})">Delete</button>
@@ -298,18 +306,17 @@ function loadAccounts() {
     ).join("");
 }
 
-// OPEN ADD ACCOUNT FORM 
 function openAccountForm() {
     editingAccountId = null;
     const modal = document.getElementById("accountForm");
     modal.style.display = "flex";
+
     document.getElementById("accountFormTitle").innerText = "Add Account";
     document.getElementById("accountName").value = "";
+    document.getElementById("accountPassword").value = "";
     document.getElementById("accountRole").value = "";
-    document.getElementById("accountName").focus();
 }
 
-// OPEN EDIT ACCOUNT FORM 
 function editAccount(id) {
     editingAccountId = Number(id);
     const account = accounts.find(a => a.id === editingAccountId);
@@ -317,45 +324,53 @@ function editAccount(id) {
 
     const modal = document.getElementById("accountForm");
     modal.style.display = "flex";
+
     document.getElementById("accountFormTitle").innerText = "Edit Account";
     document.getElementById("accountName").value = account.name;
+    document.getElementById("accountPassword").value = account.password;
     document.getElementById("accountRole").value = account.role;
-    document.getElementById("accountName").focus();
 }
 
-// SAVE ACCOUNT 
 function saveAccount() {
     const name = document.getElementById("accountName").value.trim();
-    const role = document.getElementById("accountRole").value.trim();
+    const password = document.getElementById("accountPassword").value.trim();
+    const role = document.getElementById("accountRole").value;
 
-    if (!name || !role) return alert("Please fill all fields.");
+    if (!name || !password || !role) {
+        alert("Please fill all fields.");
+        return;
+    }
 
     if (editingAccountId) {
-        const account = accounts.find(a => a.id === editingAccountId);
-        if (!account) return alert("Account not found.");
-        account.name = name;
-        account.role = role;
+        let acc = accounts.find(a => a.id === editingAccountId);
+        acc.name = name;
+        acc.password = password;
+        acc.role = role;
     } else {
         const newId = accounts.length ? Math.max(...accounts.map(a => a.id)) + 1 : 1;
-        accounts.push({ id: newId, name, role });
+        accounts.push({
+            id: newId,
+            name,
+            password,
+            role
+        });
     }
 
     closeAccountForm();
     loadAccounts();
 }
 
-// CLOSE MODAL 
 function closeAccountForm() {
     document.getElementById("accountForm").style.display = "none";
     editingAccountId = null;
 }
 
-// DELETE ACCOUNT 
 function deleteAccount(id) {
-    if (!confirm("Are you sure you want to delete this account?")) return;
+    if (!confirm("Delete this account?")) return;
     accounts = accounts.filter(a => a.id !== id);
     loadAccounts();
 }
+
 
 // INIT 
 window.onload = () => {
