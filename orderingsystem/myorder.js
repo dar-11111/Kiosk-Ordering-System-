@@ -97,11 +97,12 @@ function printReceipt() {
   let email = document.getElementById("userEmail").value;
   let schoolID = document.getElementById("userSchoolID").value;
   let scheduleDate = document.getElementById("scheduleDate").value;
-  let scheduleDate = document.getElementById("scheduleTime").value;
+  let scheduleTime = document.getElementById("scheduleTime").value;
+  
 
   // Validate inputs
-  if (user.trim() === "" || email.trim() === "" || schoolID.trim() === "" || scheduleDate === "") {
-    alert("Please fill up all fields: Name, Email, School ID, and Schedule Date, Schedule Time");
+  if (user.trim() === "" || email.trim() === "" || schoolID.trim() === "" || scheduleDate === "" || scheduleTime === ""  ) {
+    alert("Please fill up all fields: Name, Email, School ID, Schedule Date, and Schedule Time.");
     return;
   }
 
@@ -115,8 +116,7 @@ function printReceipt() {
   // Current date and time
   const now = new Date();
   const fullDate = now.toLocaleDateString();
-  const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
+ 
   const receiptCode = generateReceiptCode();
 
   // -------------------------------
@@ -147,9 +147,11 @@ function printReceipt() {
         <div class="info"><b>Name:</b> ${user}</div>
         <div class="info"><b>Email:</b> ${email}</div>
         <div class="info"><b>School ID:</b> ${schoolID}</div>
-        <div class="info"><b>Schedule:</b> ${scheduleDate}</div>
+        <div class="info"><b>Schedule Date:</b> ${scheduleDate}</div>
+		<div class="info"><b>Schedule Time:</b> ${scheduleTime}</div>
         <div class="info"><b>Date Printed:</b> ${fullDate}</div>
-        <div class="info"><b>Time Printed:</b> ${time}</div>
+		
+     
 
         <h3>Items:</h3>
         ${cart.map(item => {
@@ -179,4 +181,3 @@ function printReceipt() {
 // INIT
 // -------------------------------
 displayCart();
-
