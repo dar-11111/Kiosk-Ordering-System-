@@ -178,7 +178,7 @@
         <table id="itemsTable">
             <thead>
                 <tr>
-                    <th>ID</th><th>Name</th><th>Price</th><th>Details</th><th>Action</th>
+                    <th>ID</th><th>Name</th><th>Price</th><th>Size</th><th>Quantity</th><th>Details</th><th>Action</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -194,6 +194,12 @@
 
         <label>Price</label>
         <input type="number" id="itemPrice" placeholder="Price">
+		
+		<label>Size</label>
+        <input type="text" id="itemSize" placeholder="Size">
+		
+		<label>Quantity</label>
+        <input type="number" id="itemQuantity" placeholder="Quantity">
 
         <label>Details</label>
         <input type="text" id="itemDetails" placeholder="Item Details">
@@ -208,8 +214,8 @@
 
     </section>
 
-    <!-- ACCOUNTS -->
-    <section id="accounts" class="page">
+  <!-- ACCOUNTS -->
+<section id="accounts" class="page">
     <h1>Manage Accounts</h1>
 
     <button onclick="openAccountForm()">Add New Account</button>
@@ -220,6 +226,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Role</th>
+                <th>Password</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -230,13 +237,27 @@
     <div id="accountForm" class="modal">
         <div class="modal-content">
             <h2 id="accountFormTitle">Add Account</h2>
+
+            <label>Name</label>
             <input type="text" id="accountName" placeholder="Account Name">
-            <input type="text" id="accountRole" placeholder="Role (Admin, Staff, etc.)">
+
+            <label>Password</label>
+            <input type="password" id="accountPassword" placeholder="Password">
+
+            <label>Role</label>
+            <select id="accountRole">
+                <option value="">-- Select Role --</option>
+                <option value="Student">Student</option>
+                <option value="Staff">Staff</option>
+                <option value="Admin">Admin</option>
+            </select>
+
             <button onclick="saveAccount()">Save</button>
             <button onclick="closeAccountForm()" class="danger">Cancel</button>
         </div>
     </div>
 </section>
+
 
 		
     </section>
